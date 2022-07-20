@@ -1,26 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useState } from "react";
+// import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import {
-  auth,
   registerWithEmailAndPassword,
   signInWithGoogle,
 } from "../firebase";
 import "./StyleRegister.css";
+
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [user, loading] = useAuthState(auth);
-  const history = useNavigate();
-  const register = () => {
+  const [success, setSuccess] = useState(false)
+  const navigate = useNavigate();
+
+  async function register(e) {
+    e.preventDefault()
     if (!name) alert("Please enter name");
-    registerWithEmailAndPassword(name, email, password);
+    await registerWithEmailAndPassword(name, email, password);
+    setSuccess(true)
+    setTimeout(() => {
+      navigate('/login')
+    }, 2000)
   };
-  useEffect(() => {
-    if (loading) return;
-    if (user) history.replace("/dashboard");
-  }, [user, loading]);
+
 
   return (
     <div className="register">
