@@ -313,12 +313,12 @@ function Home() {
     <section className="footer pt-5">
       <div className="container">
         <div className="row">
-          <div className="col-xl">
+          <div className="col-6">
             <figure>
               <img src="../../assets/img/skull.webp" alt="skull" id="skull" />
             </figure>
           </div>
-          <div className="col-xl">
+          <div className="col-6">
             <div className="footer-content-right ">
               <h3 className="font-weight-normal">Want to stay in <br /> touch?</h3>
               <div className="display-1">Newsletter Subscribe</div>
