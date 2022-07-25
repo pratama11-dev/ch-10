@@ -1,7 +1,11 @@
 import React from 'react'
 import "./StyleHome.css";
+import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function Home() {
+  const [user] = useAuthState(auth);
+
   return (
     <>
       <header className="header">
@@ -44,7 +48,11 @@ function Home() {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
                   <li><a className="dropdown-item" href="/register">SIGN UP</a></li>
-                  <li><a className="dropdown-item" href="/login">LOGIN</a></li>
+                  {user ? (
+                    <li><a className="dropdown-item" href="/dashboard">Dashboard</a></li>
+                  ) : (
+                    <li><a className="dropdown-item" href="/login">LOGIN</a></li>
+                  )}
                 </ul>
               </li>
             </ul>

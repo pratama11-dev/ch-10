@@ -96,7 +96,7 @@ function GameList() {
           </Card>
         </Col>
       </Row>
-      <Row className="mt-4">
+      <Row className="mt-4 d-flex flex-column">
         {games.length > 0 ? (
           games.map((game) => {
             return (
