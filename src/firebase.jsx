@@ -85,7 +85,7 @@ const signInWithTwitter = async ()  => {
     console.error(err);
       alert(err.message);
   }}
-  
+
   const signInWithFacebook = async () =>{
     try {
       const res = await signInWithPopup(auth, facebookProvider);
@@ -203,10 +203,9 @@ const logout = () => {
 export {
   auth,
   db,
-  
-  ,
   signInWithGoogle,
   signInWithFacebook,
+  signInWithTwitter,
   signInWithEmailAndPassword,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
