@@ -38,6 +38,13 @@ function Home() {
             <a href="/#" className="nav-item nav-link px-4" id="about-us">
               ABOUT US
             </a>
+            {user ? (
+              <a href="/users" className="nav-item nav-link px-4" id="users">
+                USERS LIST
+              </a>
+            ) : (
+              "")
+            }
           </div>
 
           <div className="collapse navbar-collapse d-flex flex-row-reverse" id="nav-right">
@@ -47,11 +54,12 @@ function Home() {
                 SIGN UP
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                  <li><a className="dropdown-item" href="/register">SIGN UP</a></li>
                   {user ? (
                     <li><a className="dropdown-item" href="/dashboard">Dashboard</a></li>
-                  ) : (
-                    <li><a className="dropdown-item" href="/login">LOGIN</a></li>
+                    ) : (<>
+                      <li><a className="dropdown-item" href="/register">SIGN UP</a></li>
+                      <li><a className="dropdown-item" href="/login">LOGIN</a></li>
+                    </>
                   )}
                 </ul>
               </li>

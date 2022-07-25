@@ -3,6 +3,7 @@ import './users.css'
 
 import { getAllUsers } from "../../firebase";
 import { Table } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 function Users() {
@@ -49,6 +50,13 @@ function Users() {
                         ))}
                     </tbody>
                 </Table>
+                <div className="text-center">
+                  <Link to="/">
+                      <button className="btn btn-primary">
+                          Back To Home Screen
+                      </button>
+                  </Link>
+                </div>
             </div>
         </div>
     )

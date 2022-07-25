@@ -47,7 +47,7 @@ function Dashboard() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <ol className="breadcrumb">
                 <li className="breadcrumb-item">
-                  <a href="/home">Home</a>
+                  <a href="/">Home</a>
                 </li>
                 <li className="breadcrumb-item active" aria-current="page">
                   Dashboard
