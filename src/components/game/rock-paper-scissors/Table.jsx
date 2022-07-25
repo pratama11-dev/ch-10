@@ -6,7 +6,7 @@ function TableLeaderboard({ leaderboards = [] }) {
       <thead>
         <tr>
           <th>#</th>
-          <th>Email</th>
+          <th>Name</th>
           <th>W / D / L</th>
           <th>Score</th>
         </tr>
@@ -15,7 +15,7 @@ function TableLeaderboard({ leaderboards = [] }) {
         {leaderboards.map((data, index) => (
           <tr>
             <th scope="row">{index + 1}</th>
-            <td>{data.email}</td>
+            <td>{data.name}</td>
             <td>
               {data.win} / {data.draw} / {data.lose}
             </td>

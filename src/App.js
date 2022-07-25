@@ -18,8 +18,8 @@ function App() {
   useEffect(() => {
     async function fetchdata() {
       if (user) {
-        // const data = await getUser(user.uid);
-        setUserData({ email: user.email, uid: user.uid });
+        const data = await getUser(user.uid);
+        setUserData(data);
       }
     }
     fetchdata();

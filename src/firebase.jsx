@@ -97,9 +97,10 @@ const sendPasswordReset = async (email) => {
 };
 
 async function getUser(uid) {
-  const docRef = doc(db, "users", uid);
-  const docSnap = await getDoc(docRef);
-  return docSnap.data();
+  const docRef = collection(db, "users");
+  const q = query(docRef, where("uid", "==", uid));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => ({ ...doc.data() }))[0];
 }
 
 async function updatePhotoProfile(uid, downloadUrl) {
@@ -140,8 +141,7 @@ async function updateLeaderboardDb(user, result) {
     });
   } else {
     await setDoc(d, {
-      // name: user.name,
-      email: user.email,
+      name: user.name,
       win,
       lose,
       draw,

@@ -1,6 +1,6 @@
 /* eslint-disable */
 import refreshPng from "../../../assets/refresh.png";
-import { Container } from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 // import NavBar from "../../Navbar";
 import Handler from "./Handler";
 import { useEffect, useState } from "react";
@@ -94,6 +94,7 @@ function Play({ user }) {
   return (
     <Container>
       {/* <NavBar navigations={[]} text="Rock Paper Sisscors" /> */}
+      <h2 className="text-center">Rock Paper Scissors</h2>
       <section id="gameplay" className="mt-4">
         <div className="container-fluid">
           <div className="row justify-content-center">
