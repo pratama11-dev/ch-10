@@ -162,7 +162,7 @@ function Home() {
               </div>
               <div className="col tl-info">
                 <h2 className="tl-info-title">
-                  TBD
+                  To be decide
                 </h2>
               </div>
             </div>
