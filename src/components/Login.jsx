@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth, signInWithGoogle, logInWithEmailAndPassword } from "../firebase";
+import { auth, signInWithGoogle, logInWithEmailAndPassword, signInWithTwitter, signInWithFacebook } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import "./StyleLogin.css";
 
@@ -39,6 +39,20 @@ function Login() {
                   onClick={signInWithGoogle}
                 >
                   <i className="bi bi-google"></i>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-floating mx-1"
+                  onClick={signInWithTwitter}
+                >
+                  <i className="bi bi-twitter"></i>
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-primary btn-floating mx-1"
+                  onClick={signInWithFacebook}
+                >
+                  <i className="bi bi-facebook"></i>
                 </button>
               </div>
 

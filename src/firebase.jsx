@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import {
   GoogleAuthProvider,
+  TwitterAuthProvider,
+  FacebookAuthProvider,
   getAuth,
   signInWithPopup,
   signInWithEmailAndPassword,
@@ -25,12 +27,14 @@ import {
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCb-T20PtA5x2i41rpqHP6e_by47DcH3x8",
-  authDomain: "binar-fsw20-platinum.firebaseapp.com",
-  projectId: "binar-fsw20-platinum",
-  storageBucket: "binar-fsw20-platinum.appspot.com",
-  messagingSenderId: "216935647513",
-  appId: "1:216935647513:web:845bb4e62a1f9e855b5d88",
+  apiKey: "AIzaSyBxk4qV3VWVAur7C4P5sh0yhwFv4EL_FRI",
+  authDomain: "latihan-binar.firebaseapp.com",
+  databaseURL: "https://latihan-binar-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "latihan-binar",
+  storageBucket: "latihan-binar.appspot.com",
+  messagingSenderId: "627058673453",
+  appId: "1:627058673453:web:b3ba1f602b39c1497275a4",
+  measurementId: "G-NLL2N4XSD7"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -39,6 +43,9 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 const googleProvider = new GoogleAuthProvider();
+const twitterProvider = new TwitterAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
+
 
 const signInWithGoogle = async () => {
   try {
@@ -60,7 +67,46 @@ const signInWithGoogle = async () => {
   }
 };
 
-async function logInWithEmailAndPassword(email, password) {
+const signInWithTwitter = async ()  => {
+  try {
+    const res = await signInWithPopup(auth, twitterProvider);
+    const user = res.user;
+    const q = query(collection(db, "users"), where("uid", "==", user.uid));
+    const docs = await getDocs(q);
+    if (docs.docs.length === 0) {
+      await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        name: user.displayName,
+        authProvider: "twitter",
+        email: user.email,
+      });
+    }
+  } catch (err) {
+    console.error(err);
+      alert(err.message);
+  }}
+  
+  const signInWithFacebook = async () =>{
+    try {
+      const res = await signInWithPopup(auth, facebookProvider);
+      const user = res.user;
+      const q = query(collection(db, "users"), where("uid", "==", user.uid));
+      const docs = await getDocs(q);
+      if (docs.docs.length === 0) {
+        await addDoc(collection(db, "users"), {
+          uid: user.uid,
+          name: user.displayName,
+          authProvider: "facebook",
+          email: user.email,
+        });
+      }
+    } catch (err) {
+      console.error(err);
+      alert(err.message);
+    }
+  }
+
+async function logInWithEmailAndPassword (email, password) {
   try {
     const user = await signInWithEmailAndPassword(auth, email, password);
     return user;
@@ -157,7 +203,10 @@ const logout = () => {
 export {
   auth,
   db,
+  
+  ,
   signInWithGoogle,
+  signInWithFacebook,
   signInWithEmailAndPassword,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,
