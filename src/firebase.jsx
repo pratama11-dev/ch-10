@@ -24,7 +24,7 @@ import {
   limit,
   addDoc,
 } from "firebase/firestore";
-import { getStorage } from 'firebase/storage'
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxk4qV3VWVAur7C4P5sh0yhwFv4EL_FRI",
@@ -40,7 +40,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-const storage = getStorage(app)
+const storage = getStorage(app);
 
 const googleProvider = new GoogleAuthProvider();
 const twitterProvider = new TwitterAuthProvider();
@@ -108,11 +108,11 @@ const signInWithTwitter = async ()  => {
 
 async function logInWithEmailAndPassword (email, password) {
   try {
-    const user = await signInWithEmailAndPassword(auth, email, password)
-    return user
+    const user = await signInWithEmailAndPassword(auth, email, password);
+    return user;
   } catch (err) {
-    console.error(err)
-    alert(err.message)
+    console.error(err);
+    alert(err.message);
   }
 }
 
@@ -142,58 +142,57 @@ const sendPasswordReset = async (email) => {
   }
 };
 
-
 async function getUser(uid) {
-  const dc = doc(db, 'users', uid)
-  const docs = await getDoc(dc)
-  return docs.data()
+  const docRef = collection(db, "users");
+  const q = query(docRef, where("uid", "==", uid));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map((doc) => ({ ...doc.data() }))[0];
 }
 
-async function updatePhotoProfile (uid, downloadUrl) {
+async function updatePhotoProfile(uid, downloadUrl) {
   // Cari data dari collection users yang mempunyai dokument sama dgn uid
   // update dengan profile url-nya
-  await updateDoc(doc(db, 'users', uid), {
-    profileUrl: downloadUrl
-  })
+  await updateDoc(doc(db, "users", uid), {
+    profileUrl: downloadUrl,
+  });
 }
 
 async function getLeaderBoards() {
-  const ref = collection(db, 'users_leaderboard')
-  const q = query(ref, orderBy('score', 'desc'), limit(5))
-  const d = await getDocs(q)
-  return d.docs.map(d => d.data())
+  const ref = collection(db, "users_leaderboard");
+  const q = query(ref, orderBy("score", "desc"), limit(5));
+  const d = await getDocs(q);
+  return d.docs.map((d) => d.data());
 }
 
 async function updateLeaderboardDb(user, result) {
-  const d = doc(db, 'users_leaderboard', user.uid)
-  const docs = await getDoc(d)
+  const d = doc(db, "users_leaderboard", user.uid);
+  const docs = await getDoc(d);
 
-  const data = docs.data()
+  const data = docs.data();
 
-  const asignScore = result === 'WIN' ? 2 : result === 'LOSE' ? -1 : 0
-  const compare = (prms, prms2) => prms === prms2 ? 1 : 0
+  const asignScore = result === "WIN" ? 2 : result === "LOSE" ? -1 : 0;
+  const compare = (prms, prms2) => (prms === prms2 ? 1 : 0);
 
-  const win =  compare(result, 'WIN')
-  const lose = compare(result, 'LOSE')
-  const draw = compare(result, 'DRAW')
-
+  const win = compare(result, "WIN");
+  const lose = compare(result, "LOSE");
+  const draw = compare(result, "DRAW");
 
   if (data) {
-    const score = (data.draw * 0) + (data.lose * -1) + (data.win * 2)
+    const score = data.draw * 0 + data.lose * -1 + data.win * 2;
     await updateDoc(d, {
       win: data.win + win,
       lose: data.lose + lose,
       draw: data.draw + draw,
-      score: score + asignScore
-    })
+      score: score + asignScore,
+    });
   } else {
     await setDoc(d, {
       name: user.name,
       win,
       lose,
       draw,
-      score: asignScore
-    })
+      score: asignScore,
+    });
   }
 }
 
@@ -204,7 +203,8 @@ const logout = () => {
 export {
   auth,
   db,
-  signInWithTwitter,
+  
+  ,
   signInWithGoogle,
   signInWithFacebook,
   signInWithEmailAndPassword,
@@ -216,6 +216,6 @@ export {
   getUser,
   updatePhotoProfile,
   getLeaderBoards,
-  updateLeaderboardDb,
+  updateLeaderboardDb as updateLeaderboard,
   storage,
 };

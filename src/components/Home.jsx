@@ -1,173 +1,274 @@
-import React from 'react'
+import React from "react";
 import "./StyleHome.css";
 
 function Home() {
   return (
     <>
       <header className="header">
-      <nav className="navbar navbar-expand-lg navbar-dark nav-style bd-navbar ">
-
-        <a className="navbar-brand ml-5 px-5" href="/">
-          Logo
-        </a>
-
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar4" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" className="bi" fill="currentColor"
-            viewBox="0 0 16 16">
-            <path fillRule="evenodd"
-              d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z">
-            </path>
-          </svg>
-        </button>
-        <div className="collapse navbar-collapse" id="navbar4">
-
-          <div className="navbar-nav ml-3">
-            <a href="/" className="nav-item nav-link ml-5 px-4" id="home">
-              HOME
-            </a>
-            <a href="/#" className="nav-item nav-link px-4" id="work">
-              WORK
-            </a>
-            <a href="/#" className="nav-item nav-link px-4" id="contact">
-              CONTACT
-            </a>
-            <a href="/#" className="nav-item nav-link px-4" id="about-us">
-              ABOUT US
-            </a>
-          </div>
-
-          <div className="collapse navbar-collapse d-flex flex-row-reverse" id="nav-right">
-            <ul className="navbar-nav px-lg-2 mt-3 mt-lg-0 dropdown p-2 bd-highlight ">
-              <li className="nav-item">
-                <a className="nav-link dropdown-toggle " href="/#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                SIGN UP
-                </a>
-                <ul className="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                  <li><a className="dropdown-item" href="/register">SIGN UP</a></li>
-                  <li><a className="dropdown-item" href="/login">LOGIN</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <div className="row row-cols-1 ml-1 header-info">
-        <div className="col header-info-col">
-          <h1 className="header-title-info text-center">Play Traditional Game</h1>
-          <h3 className="mini-info text-center">Experience new tradition game play</h3>
-          <a href="/games" className="btn btn-warning btn-lg header-info-button">
-          Play NOW ||
-          <i className="bi bi-dice-5"></i>
+        <nav className="navbar navbar-expand-lg navbar-dark nav-style bd-navbar ">
+          <a className="navbar-brand ml-5 px-5" href="/">
+            Logo
           </a>
-        </div>
-        <div className="col align-self-end story-scroll-down">
-          <a href="#gallery" className="header-scroll-link-wrapper+">
-            <p className="header-scroll-toggle">
-              THE STORY
-            </p>
-            <i className="bi bi-caret-down story-scroll-down-img"></i>
-          </a>
-        </div>
-      </div>
-    </header>
 
-    <section className="gallery" id="gallery">
-      <div className="container">
-        <div className="row ml-5 gallery-content">
-          <div className="col-5  gl-left-side">
-            <h3 className="gallery-mini-info">
-              What's So Special ?
-            </h3>
-            <h1 className="gl-h1-info">
-              THE GAMES
-            </h1>
-          </div>
-          <div className="col-7  gl-right-side">
-            <div id="Indicatordot" className="carousel slide" data-bs-ride="carousel">
-              <div className="carousel-indicators">
-                <button type="button" data-bs-target="#Indicatordot" data-bs-slide-to="0" className="active rounded-circle" aria-label="Slide 1" aria-current="true"></button>
-                <button type="button" data-bs-target="#Indicatordot" data-bs-slide-to="1" aria-label="Slide 2" className="rounded-circle"></button>
-                <button type="button" data-bs-target="#Indicatordot" data-bs-slide-to="2" aria-label="Slide 3" className="rounded-circle"></button>
-                <button type="button" data-bs-target="#Indicatordot" data-bs-slide-to="3" aria-label="Slide 4" className="rounded-circle"></button>
-              </div>
-              <div className="carousel-inner">
-                <div className="carousel-item active" data-bs-interval="10000">
-                  <img src="../../assets/img/slide-1.webp" className="d-block w-100" alt="slide 1" />
-                </div>
-                <div className="carousel-item " data-bs-interval="10000">
-                  <img src="../../assets/img/slide-2.webp" className="d-block w-100" alt="slide 2" />
-                </div>
-                <div className="carousel-item" data-bs-interval="10000">
-                  <img src="../../assets/img/slide-3.webp" className="d-block w-100" alt="slide 3" />
-                </div>
-                <div className="carousel-item" data-bs-interval="10000">
-                  <img src="../../assets/img/slide-4.webp" className="d-block w-100" alt="slide 4" />
-                </div>
-              </div>
-              <button className="carousel-control-prev icon-costum-left" type="button" data-bs-target="#Indicatordot" data-bs-slide="prev">
-              <span className="carousel-control-prev-icon " aria-hidden="true"></span>
-              <span className="visually-hidden">Previous</span>
-              </button>
-              <button className="carousel-control-next icon-costum-right" type="button" data-bs-target="#Indicatordot" data-bs-slide="next">
-              <span className="carousel-control-next-icon " aria-hidden="true"></span>
-              <span className="visually-hidden">Next</span>
-              </button>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar4"
+            aria-controls="bdNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              className="bi"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fillRule="evenodd"
+                d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+              ></path>
+            </svg>
+          </button>
+          <div className="collapse navbar-collapse" id="navbar4">
+            <div className="navbar-nav ml-3">
+              <a href="/" className="nav-item nav-link ml-5 px-4" id="home">
+                HOME
+              </a>
+              <a href="/games" className="nav-item nav-link px-4" id="work">
+                GAMES
+              </a>
+              <a href="/#" className="nav-item nav-link px-4" id="contact">
+                CONTACT
+              </a>
+              <a href="/#" className="nav-item nav-link px-4" id="about-us">
+                ABOUT US
+              </a>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section className="features ">
-      <div className="container">
-        <div className="row justify-content-end features-contents">
-          <div className="col-4 features-info mb-2">
-            <h3 className="features-info-title">
-              What's so special?
-            </h3>
-            <h1 className="features-info-content">
-              FEATURES
+            <div
+              className="collapse navbar-collapse d-flex flex-row-reverse"
+              id="nav-right"
+            >
+              <ul className="navbar-nav px-lg-2 mt-3 mt-lg-0 dropdown p-2 bd-highlight ">
+                <li className="nav-item">
+                  <a
+                    className="nav-link dropdown-toggle "
+                    href="/#"
+                    id="navbarScrollingDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    SIGN UP
+                  </a>
+                  <ul
+                    className="dropdown-menu"
+                    aria-labelledby="navbarScrollingDropdown"
+                  >
+                    <li>
+                      <a className="dropdown-item" href="/register">
+                        SIGN UP
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="/login">
+                        LOGIN
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <div className="row row-cols-1 ml-1 header-info">
+          <div className="col header-info-col">
+            <h1 className="header-title-info text-center">
+              Play Traditional Game
             </h1>
+            <h3 className="mini-info text-center">
+              Experience new tradition game play
+            </h3>
+            <a
+              href="/games"
+              className="btn btn-warning btn-lg header-info-button"
+            >
+              Play NOW ||
+              <i className="bi bi-dice-5"></i>
+            </a>
+          </div>
+          <div className="col align-self-end story-scroll-down">
+            <a href="#gallery" className="header-scroll-link-wrapper+">
+              <p className="header-scroll-toggle">THE STORY</p>
+              <i className="bi bi-caret-down story-scroll-down-img"></i>
+            </a>
           </div>
         </div>
-        <div className="row justify-content-end features-timeline">
-          <div className="col-5 features-timeline-content">
-            <div className="row timeline">
-              <div className="col-3 pt-2 mt-1 timeline-dot">
-                <img src="../../assets/img/Ellipse.svg" alt=""/>
-              </div>
-              <div className="col tl-info">
-                <h2 className="tl-info-title">
-                  TRADITIONAL GAMES
-                </h2>
-                <p className="tl-info-content">
-                  If you miss your childhood, we provide many traditional games here
-                </p>
+      </header>
+
+      <section className="gallery" id="gallery">
+        <div className="container">
+          <div className="row ml-5 gallery-content">
+            <div className="col-5  gl-left-side">
+              <h3 className="gallery-mini-info">What's So Special ?</h3>
+              <h1 className="gl-h1-info">THE GAMES</h1>
+            </div>
+            <div className="col-7  gl-right-side">
+              <div
+                id="Indicatordot"
+                className="carousel slide"
+                data-bs-ride="carousel"
+              >
+                <div className="carousel-indicators">
+                  <button
+                    type="button"
+                    data-bs-target="#Indicatordot"
+                    data-bs-slide-to="0"
+                    className="active rounded-circle"
+                    aria-label="Slide 1"
+                    aria-current="true"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#Indicatordot"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2"
+                    className="rounded-circle"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#Indicatordot"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3"
+                    className="rounded-circle"
+                  ></button>
+                  <button
+                    type="button"
+                    data-bs-target="#Indicatordot"
+                    data-bs-slide-to="3"
+                    aria-label="Slide 4"
+                    className="rounded-circle"
+                  ></button>
+                </div>
+                <div className="carousel-inner">
+                  <div
+                    className="carousel-item active"
+                    data-bs-interval="10000"
+                  >
+                    <img
+                      src="../../assets/img/slide-1.webp"
+                      className="d-block w-100"
+                      alt="slide 1"
+                    />
+                  </div>
+                  <div className="carousel-item " data-bs-interval="10000">
+                    <img
+                      src="../../assets/img/slide-2.webp"
+                      className="d-block w-100"
+                      alt="slide 2"
+                    />
+                  </div>
+                  <div className="carousel-item" data-bs-interval="10000">
+                    <img
+                      src="../../assets/img/slide-3.webp"
+                      className="d-block w-100"
+                      alt="slide 3"
+                    />
+                  </div>
+                  <div className="carousel-item" data-bs-interval="10000">
+                    <img
+                      src="../../assets/img/slide-4.webp"
+                      className="d-block w-100"
+                      alt="slide 4"
+                    />
+                  </div>
+                </div>
+                <button
+                  className="carousel-control-prev icon-costum-left"
+                  type="button"
+                  data-bs-target="#Indicatordot"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon "
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button
+                  className="carousel-control-next icon-costum-right"
+                  type="button"
+                  data-bs-target="#Indicatordot"
+                  data-bs-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon "
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
               </div>
             </div>
-            <div className="row timeline">
-              <div className="col-3 pt-2 mt-1 timeline-dot">
-                <img src="../../assets/img/Ellipse-transparent.svg" alt="" />
-              </div>
-              <div className="col tl-info">
-                <h2 className="tl-info-title">
-                  GAME SUIT
-                </h2>
-              </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="features ">
+        <div className="container">
+          <div className="row justify-content-end features-contents">
+            <div className="col-4 features-info mb-2">
+              <h3 className="features-info-title">What's so special?</h3>
+              <h1 className="features-info-content">FEATURES</h1>
             </div>
-            <div className="row timeline">
-              <div className="col-3 pt-2 mt-1 timeline-dot">
-                <img src="../../assets/img/Ellipse-transparent.svg" alt="" />
+          </div>
+          <div className="row justify-content-end features-timeline">
+            <div className="col-5 features-timeline-content">
+              <div className="row timeline">
+                <div className="col-3 pt-2 mt-1 timeline-dot">
+                  <img src="../../assets/img/Ellipse.svg" alt="" />
+                </div>
+                <div className="col tl-info">
+                  <h2 className="tl-info-title">TRADITIONAL GAMES</h2>
+                  <p className="tl-info-content">
+                    If you miss your childhood, we provide many traditional
+                    games here
+                  </p>
+                </div>
               </div>
+              <div className="row timeline">
+                <div className="col-3 pt-2 mt-1 timeline-dot">
+                  <img src="../../assets/img/Ellipse-transparent.svg" alt="" />
+                </div>
+                <div className="col tl-info">
+                  <h2 className="tl-info-title">GAME SUIT</h2>
+                </div>
+              </div>
+
+              <div className="row timeline">
+                <div className="col-3 pt-2 mt-1 timeline-dot">
+                  <img src="../../assets/img/Ellipse-transparent.svg" alt="" />
+                </div>
+                <div className="col tl-info">
+                  <h2 className="tl-info-title">TBD</h2>
+                </div>
+
               <div className="col tl-info">
                 <h2 className="tl-info-title">
                   To be decide
                 </h2>
+
               </div>
             </div>
           </div>
         </div>
+
+      </section>
+
       </div>
     </section>
 
@@ -180,163 +281,209 @@ function Home() {
           <div className="col">
             <div className="display-2 text-left system__req mb-5">System Requirements</div>
 
-            <table className="table table-bordered table-content-sys">
-              <tbody>
-                <tr>
-                  <td>
-                    <h2 className="requirements-info">OS:</h2>
-                    <p className="requirements-info-content">
-                      Windows 7 64-bit only<br />(No OSX support at this time)
-                    </p>
-                  </td>
-                  <td>
-                    <h2 className="requirements-info">Processor:</h2>
-                    <p className="requirements-info-content">Intel Core 2 Duo @2.4GHz or AMD Athlon X2 @ 2.8GHz</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h2 className="requirements-info">Memory:</h2>
-                    <p className="requirements-info-content">4 GB RAM</p>
-                  </td>
-                  <td>
-                    <h2 className="requirements-info">Storage:</h2>
-                    <p className="requirements-info-content">8 GB available space</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan="2">
-                    <h2 className="requirements-info">Graphics:</h2>
-                    <p className="requirements-info-content">
-                      NVIDIA GeForce GTX 660 2GB or<br />AMD Radeon HD 7850 2GB DirectX11 (Shader Model S)
-                    </p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-
+      <section className="sysreq">
+        <div className="container">
+          <div className="req-info-top">
+            <h5>Can My Computer Run This Game?</h5>
           </div>
-        </div>
-      </div>
-    </section>
+          <div className="row">
+            <div className="col-lg-6">
+              <div className="display-2 text-left system__req mb-5">
+                System Requirements
+              </div>
 
-    <section className="score" id="score">
-      <div className="container">
-        <div className="d-flex flex-wrap">
-          <div className="col-lg-2 d-flex align-items-center score-left-side">
-            <div>
-              <div className="display-5">Top Scores</div>
-              <p className="font-weight-normal my-5">This top score from various games provided on this platform</p>
-              <a href="/#" className="btn btn-warning">see more</a>
-            </div>
-          </div>
-
-          <div className="col mb-5">
-            <div className="row">
-              <div className="col-lg-4 col-md-7 offset-lg-6 offset-md-2 offset-sm-1 twittercards">
-                <div className="card text-white bg-dark mb-2 ">
-                  <div className="card-header">
-                    <div className="d-flex justify-content-around">
-                      <div className="symbol symbol-40 symbol-lg-80 symbol-circle mr-3">
-                        <img alt="Pic" src="../../assets/img/evan.png"/>
-                      </div>
-                      <div className="col-6">
-                        <h3>Evan Lahti</h3>
-                        <h4>PC Gamer</h4>
-                      </div>
-                      <img src="../../assets/img/twitter.svg" className="img-fluid float-right col-2 " alt="twitter"/>
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      "One of my gaming highlights of the year."
-                    </h5>
-                    <p className="card-text">October 18, 2018</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-5 col-md-7 offset-lg-3 offset-md-2 offset-sm-1 twittercards">
-                <div className="card text-white bg-dark mb-2 " id="card-2">
-                  <div className="card-header">
-                    <div className="d-flex justify-content-around">
-                      <div className="symbol symbol-40 symbol-lg-80 symbol-circle mr-3">
-                        <img alt="Pic" src="../../assets/img/jada.png"/>
-                      </div>
-                      <div className="col-6">
-                        <h3>Jada Griffin</h3>
-                        <h4>Nerdreactor</h4>
-                      </div>
-                      <img src="../../assets/img/twitter.svg" className="img-fluid float-right col-2 " alt="twitter" />
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      "The next big thing in the world of streaming and survival games."
-                    </h5>
-                    <p className="card-text">December 21, 2018</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-lg-5 col-md-7 offset-lg-5 offset-md-2 offset-sm-1 twittercards">
-                <div className="card text-white bg-dark mb-1 " id="card-3">
-                  <div className="card-header">
-                    <div className="d-flex justify-content-around">
-                      <div className="symbol symbol-40 symbol-lg-80 symbol-circle mr-3">
-                        <img alt="Pic" src="../../assets/img/aaron.png"/>
-                      </div>
-                      <div className="col-6">
-                        <h3>Aaron Williams</h3>
-                        <h4>Uproxx</h4>
-                      </div>
-                      <img src="../../assets/img/twitter.svg" className="img-fluid float-right col-2 " alt="twitter"/>
-                    </div>
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">
-                      "Snoop Dogg Playing The Wildly Entertaining 'SOS' Is Ridiculous
-                    </h5>
-                    <p className="card-text">December 24, 2018</p>
-                  </div>
-                </div>
-              </div>
+              <table className="table table-bordered table-content-sys">
+                <tbody>
+                  <tr>
+                    <td>
+                      <h2 className="requirements-info">OS:</h2>
+                      <p className="requirements-info-content">
+                        Windows 7 64-bit only
+                        <br />
+                        (No OSX support at this time)
+                      </p>
+                    </td>
+                    <td>
+                      <h2 className="requirements-info">Processor:</h2>
+                      <p className="requirements-info-content">
+                        Intel Core 2 Duo @2.4GHz or AMD Athlon X2 @ 2.8GHz
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <h2 className="requirements-info">Memory:</h2>
+                      <p className="requirements-info-content">4 GB RAM</p>
+                    </td>
+                    <td>
+                      <h2 className="requirements-info">Storage:</h2>
+                      <p className="requirements-info-content">
+                        8 GB available space
+                      </p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan="2">
+                      <h2 className="requirements-info">Graphics:</h2>
+                      <p className="requirements-info-content">
+                        NVIDIA GeForce GTX 660 2GB or
+                        <br />
+                        AMD Radeon HD 7850 2GB DirectX11 (Shader Model S)
+                      </p>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
-
-    <section className="footer pt-5">
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
-            <figure>
-              <img src="../../assets/img/skull.webp" alt="skull" id="skull" />
-            </figure>
-          </div>
-          <div className="col-6">
-            <div className="footer-content-right ">
-              <h3 className="font-weight-normal">Want to stay in <br /> touch?</h3>
-              <div className="display-1">Newsletter Subscribe</div>
-              <p className="mt-3">
-                In order to start receiving our news, all you have to do is enter your email address. Everything else will be taken care of by us. We will send you emails containing information about game. We don’t spam.
-              </p>
+      <section className="score" id="score">
+        <div className="container">
+          <div className="d-flex flex-wrap">
+            <div className="col-lg-2 d-flex align-items-center score-left-side">
+              <div>
+                <div className="display-5">Top Scores</div>
+                <p className="font-weight-normal my-5">
+                  This top score from various games provided on this platform
+                </p>
+                <a href="/#" className="btn btn-warning">
+                  see more
+                </a>
+              </div>
             </div>
-            <div className="footer-content-left">
-              <form className="form row d-flex align-items-center">
-                <div className="form-group col-md-7">
-                  <input type="text" className="form-control mr-sm-2 bg-dark text-white" id="email" placeholder="youremail@binar.co.id" />
+
+            <div className="col mb-5">
+              <div className="row">
+                <div className="col-lg-4 col-md-7 offset-lg-6 offset-md-2 offset-sm-1 twittercards">
+                  <div className="card text-white bg-dark mb-2 ">
+                    <div className="card-header">
+                      <div className="d-flex justify-content-around">
+                        <div className="symbol symbol-40 symbol-lg-80 symbol-circle mr-3">
+                          <img alt="Pic" src="../../assets/img/evan.png" />
+                        </div>
+                        <div className="col-6">
+                          <h3>Evan Lahti</h3>
+                          <h4>PC Gamer</h4>
+                        </div>
+                        <img
+                          src="../../assets/img/twitter.svg"
+                          className="img-fluid float-right col-2 "
+                          alt="twitter"
+                        />
+                      </div>
+                    </div>
+                    <div className="card-body">
+                      <h5 className="card-title">
+                        "One of my gaming highlights of the year."
+                      </h5>
+                      <p className="card-text">October 18, 2018</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="col-md-5 text-left">
-                  <button className="btn btn-warning w-100">
-                  Subscribe Now
-                  </button>
+              </div>
+              <div className="row">
+                <div className="col-lg-5 col-md-7 offset-lg-3 offset-md-2 offset-sm-1 twittercards">
+                  <div className="card text-white bg-dark mb-2 " id="card-2">
+                    <div className="card-header">
+                      <div className="d-flex justify-content-around">
+                        <div className="symbol symbol-40 symbol-lg-80 symbol-circle mr-3">
+                          <img alt="Pic" src="../../assets/img/jada.png" />
+                        </div>
+                        <div className="col-6">
+                          <h3>Jada Griffin</h3>
+                          <h4>Nerdreactor</h4>
+                        </div>
+                        <img
+                          src="../../assets/img/twitter.svg"
+                          className="img-fluid float-right col-2 "
+                          alt="twitter"
+                        />
+                      </div>
+                    </div>
+                    <div className="card-body">
+                      <h5 className="card-title">
+                        "The next big thing in the world of streaming and
+                        survival games."
+                      </h5>
+                      <p className="card-text">December 21, 2018</p>
+                    </div>
+                  </div>
                 </div>
-              </form>
+              </div>
+              <div className="row">
+                <div className="col-lg-5 col-md-7 offset-lg-5 offset-md-2 offset-sm-1 twittercards">
+                  <div className="card text-white bg-dark mb-1 " id="card-3">
+                    <div className="card-header">
+                      <div className="d-flex justify-content-around">
+                        <div className="symbol symbol-40 symbol-lg-80 symbol-circle mr-3">
+                          <img alt="Pic" src="../../assets/img/aaron.png" />
+                        </div>
+                        <div className="col-6">
+                          <h3>Aaron Williams</h3>
+                          <h4>Uproxx</h4>
+                        </div>
+                        <img
+                          src="../../assets/img/twitter.svg"
+                          className="img-fluid float-right col-2 "
+                          alt="twitter"
+                        />
+                      </div>
+                    </div>
+                    <div className="card-body">
+                      <h5 className="card-title">
+                        "Snoop Dogg Playing The Wildly Entertaining 'SOS' Is
+                        Ridiculous
+                      </h5>
+                      <p className="card-text">December 24, 2018</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="footer pt-5">
+        <div className="container">
+          <div className="row">
+            <div className="col-6">
+              <figure>
+                <img src="../../assets/img/skull.webp" alt="skull" id="skull" />
+              </figure>
+            </div>
+            <div className="col-6">
+              <div className="footer-content-right ">
+                <h3 className="font-weight-normal">
+                  Want to stay in <br /> touch?
+                </h3>
+                <div className="display-1">Newsletter Subscribe</div>
+                <p className="mt-3">
+                  In order to start receiving our news, all you have to do is
+                  enter your email address. Everything else will be taken care
+                  of by us. We will send you emails containing information about
+                  game. We don’t spam.
+                </p>
+              </div>
+              <div className="footer-content-left">
+                <form className="form row d-flex align-items-center">
+                  <div className="form-group col-md-7">
+                    <input
+                      type="text"
+                      className="form-control mr-sm-2 bg-dark text-white"
+                      id="email"
+                      placeholder="youremail@binar.co.id"
+                    />
+                  </div>
+                  <div className="col-md-5 text-left">
+                    <button className="btn btn-warning w-100">
+                      Subscribe Now
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -392,29 +539,33 @@ function Home() {
                 </a>
               </div>
             </div>
-          </div>
-          <hr />
-
+            <hr />
           <div className="d-flex content-justify-end">
             <div className="col-lg-4">
               <div className="d-inline">
                 <p>© 2018 Your Games, inc. All Rights Reserved</p>
               </div>
-            </div>
-            <div className="col-lg-5 offset-lg-2 mb-2">
-              <div className="d-inline">
-                <a href="/#"><span>Privacy Policy </span></a>|
-                <a href="/#"><span>Terms of Services </span></a>|
-                <a href="/#"><span>Code of Conduct</span></a>
+              <div className="col-lg-5 offset-lg-2 mb-2">
+                <div className="d-inline">
+                  <a href="/#">
+                    <span>Privacy Policy </span>
+                  </a>
+                  |
+                  <a href="/#">
+                    <span>Terms of Services </span>
+                  </a>
+                  |
+                  <a href="/#">
+                    <span>Code of Conduct</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-
         </div>
-      </div>
-    </section>
+      </section>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
