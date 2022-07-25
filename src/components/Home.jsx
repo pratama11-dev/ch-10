@@ -172,12 +172,12 @@ function Home() {
     </section>
 
     <section className="sysreq">
-      <div className="container">
+      <div className="container d-flex justify-content-between">
         <div className="req-info-top">
           <h5>Can My Computer Run This Game?</h5>
         </div>
         <div className="row">
-          <div className="col-lg-6">
+          <div className="col">
             <div className="display-2 text-left system__req mb-5">System Requirements</div>
 
             <table className="table table-bordered table-content-sys">
@@ -342,7 +342,7 @@ function Home() {
         </div>
       </div>
       <div className="navigation text-center" id="navigation">
-        <div className="container">
+        <div>
           <div className="row">
             <div className="col-12 my-2 nav-item">
               <div className="d-flex justify-content-between mx-5">
@@ -395,7 +395,7 @@ function Home() {
           </div>
           <hr />
 
-          <div className="row content-justify-end footer">
+          <div className="d-flex content-justify-end">
             <div className="col-lg-4">
               <div className="d-inline">
                 <p>© 2018 Your Games, inc. All Rights Reserved</p>
