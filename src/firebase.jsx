@@ -60,7 +60,7 @@ const signInWithGoogle = async () => {
   }
 };
 
-async function logInWithEmailAndPassword (email, password) {
+async function logInWithEmailAndPassword(email, password) {
   try {
     const user = await signInWithEmailAndPassword(auth, email, password)
     return user
@@ -103,7 +103,23 @@ async function getUser(uid) {
   return docs.data()
 }
 
-async function updatePhotoProfile (uid, downloadUrl) {
+async function getAllUsers(){
+  // const aha = db.firestore();
+  const q = query(collection(db, "users"))
+  const aa = await getDocs(q);
+
+  const usr = aa.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data()
+  }))
+
+  // usr.map(aha => {
+  //   console.log(aha['name']);
+  // })
+  return usr;
+}
+
+async function updatePhotoProfile(uid, downloadUrl) {
   // Cari data dari collection users yang mempunyai dokument sama dgn uid
   // update dengan profile url-nya
   await updateDoc(doc(db, 'users', uid), {
@@ -127,7 +143,7 @@ async function updateLeaderboardDb(user, result) {
   const asignScore = result === 'WIN' ? 2 : result === 'LOSE' ? -1 : 0
   const compare = (prms, prms2) => prms === prms2 ? 1 : 0
 
-  const win =  compare(result, 'WIN')
+  const win = compare(result, 'WIN')
   const lose = compare(result, 'LOSE')
   const draw = compare(result, 'DRAW')
 
@@ -157,6 +173,7 @@ const logout = () => {
 
 export {
   auth,
+  firebaseConfig,
   db,
   signInWithGoogle,
   signInWithEmailAndPassword,
@@ -170,4 +187,5 @@ export {
   getLeaderBoards,
   updateLeaderboardDb,
   storage,
+  getAllUsers
 };
