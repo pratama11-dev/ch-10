@@ -1,49 +1,50 @@
 import { initializeApp } from "firebase/app";
 import {
-  GoogleAuthProvider,
-  TwitterAuthProvider,
-  FacebookAuthProvider,
-  getAuth,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  sendPasswordResetEmail,
-  signOut,
+    GoogleAuthProvider,
+    TwitterAuthProvider,
+    FacebookAuthProvider,
+    GithubAuthprovider,
+    getAuth,
+    signInWithPopup,
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
+    sendPasswordResetEmail,
+    signOut,
 } from "firebase/auth";
 import {
-  getFirestore,
-  query,
-  getDocs,
-  doc,
-  collection,
-  where,
-  setDoc,
-  updateDoc,
-  getDoc,
-  orderBy,
-  limit,
-  addDoc,
+    getFirestore,
+    query,
+    getDocs,
+    doc,
+    collection,
+    where,
+    setDoc,
+    updateDoc,
+    getDoc,
+    orderBy,
+    limit,
+    addDoc,
 } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBxk4qV3VWVAur7C4P5sh0yhwFv4EL_FRI",
-//   authDomain: "latihan-binar.firebaseapp.com",
-//   databaseURL: "https://latihan-binar-default-rtdb.asia-southeast1.firebasedatabase.app",
-//   projectId: "latihan-binar",
-//   storageBucket: "latihan-binar.appspot.com",
-//   messagingSenderId: "627058673453",
-//   appId: "1:627058673453:web:b3ba1f602b39c1497275a4",
-//   measurementId: "G-NLL2N4XSD7"
-// };
 const firebaseConfig = {
-  apiKey: "AIzaSyCb-T20PtA5x2i41rpqHP6e_by47DcH3x8",
-  authDomain: "binar-fsw20-platinum.firebaseapp.com",
-  projectId: "binar-fsw20-platinum",
-  storageBucket: "binar-fsw20-platinum.appspot.com",
-  messagingSenderId: "216935647513",
-  appId: "1:216935647513:web:845bb4e62a1f9e855b5d88",
+    apiKey: "AIzaSyBxk4qV3VWVAur7C4P5sh0yhwFv4EL_FRI",
+    authDomain: "latihan-binar.firebaseapp.com",
+    databaseURL: "https://latihan-binar-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "latihan-binar",
+    storageBucket: "latihan-binar.appspot.com",
+    messagingSenderId: "627058673453",
+    appId: "1:627058673453:web:b3ba1f602b39c1497275a4",
+    measurementId: "G-NLL2N4XSD7"
 };
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCb-T20PtA5x2i41rpqHP6e_by47DcH3x8",
+//   authDomain: "binar-fsw20-platinum.firebaseapp.com",
+//   projectId: "binar-fsw20-platinum",
+//   storageBucket: "binar-fsw20-platinum.appspot.com",
+//   messagingSenderId: "216935647513",
+//   appId: "1:216935647513:web:845bb4e62a1f9e855b5d88",
+// };
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -53,190 +54,213 @@ const storage = getStorage(app);
 const googleProvider = new GoogleAuthProvider();
 const twitterProvider = new TwitterAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
+const githubProvider = new GithubAuthprovider();
 
-const signInWithGoogle = async () => {
-  try {
-    const res = await signInWithPopup(auth, googleProvider);
-    const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: "google",
-        email: user.email,
-      });
+const signInWithGoogle = async() => {
+    try {
+        const res = await signInWithPopup(auth, googleProvider);
+        const user = res.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+        if (docs.docs.length === 0) {
+            await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name: user.displayName,
+                authProvider: "google",
+                email: user.email,
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
     }
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
 };
 
-const signInWithTwitter = async () => {
-  try {
-    const res = await signInWithPopup(auth, twitterProvider);
-    const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: "twitter",
-        email: user.email,
-      });
+const signInWithTwitter = async() => {
+    try {
+        const res = await signInWithPopup(auth, twitterProvider);
+        const user = res.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+        if (docs.docs.length === 0) {
+            await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name: user.displayName,
+                authProvider: "twitter",
+                email: user.email,
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
     }
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
 };
 
-const signInWithFacebook = async () => {
-  try {
-    const res = await signInWithPopup(auth, facebookProvider);
-    const user = res.user;
-    const q = query(collection(db, "users"), where("uid", "==", user.uid));
-    const docs = await getDocs(q);
-    if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
-        uid: user.uid,
-        name: user.displayName,
-        authProvider: "facebook",
-        email: user.email,
-      });
+const signInWithFacebook = async() => {
+    try {
+        const res = await signInWithPopup(auth, facebookProvider);
+        const user = res.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+        if (docs.docs.length === 0) {
+            await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name: user.displayName,
+                authProvider: "facebook",
+                email: user.email,
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
     }
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
 };
 
-async function logInWithEmailAndPassword(email, password) {
-  try {
-    const user = await signInWithEmailAndPassword(auth, email, password);
-    return user;
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
+const signInWithGithub = async() => {
+    try {
+        const res = await signInWithPopup(auth, githubProvider);
+        const user = res.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+        if (docs.docs.length === 0) {
+            await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name: user.displayName,
+                authProvider: "twitter",
+                email: user.email,
+            })
+        }
+
+    } catch (error) {
+        console.error(err);
+        alert(err.message);
+    }
 }
 
-const registerWithEmailAndPassword = async (name, email, password) => {
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const user = res.user;
-    await addDoc(collection(db, "users"), {
-      uid: user.uid,
-      name,
-      authProvider: "local",
-      email,
-    });
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
+async function logInWithEmailAndPassword(email, password) {
+    try {
+        const user = await signInWithEmailAndPassword(auth, email, password);
+        return user;
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+}
+
+const registerWithEmailAndPassword = async(name, email, password) => {
+    try {
+        const res = await createUserWithEmailAndPassword(auth, email, password);
+        const user = res.user;
+        await addDoc(collection(db, "users"), {
+            uid: user.uid,
+            name,
+            authProvider: "local",
+            email,
+        });
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
 };
 
-const sendPasswordReset = async (email) => {
-  try {
-    await sendPasswordResetEmail(auth, email);
-    alert("Password reset link sent!");
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
+const sendPasswordReset = async(email) => {
+    try {
+        await sendPasswordResetEmail(auth, email);
+        alert("Password reset link sent!");
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
 };
 
 async function getUser(uid) {
-  const docRef = collection(db, "users");
-  const q = query(docRef, where("uid", "==", uid));
-  const querySnapshot = await getDocs(q);
-  return querySnapshot.docs.map((doc) => ({ ...doc.data() }))[0];
+    const docRef = collection(db, "users");
+    const q = query(docRef, where("uid", "==", uid));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs.map((doc) => ({...doc.data() }))[0];
 }
 
-async function getAllUsers(){
-  // const aha = db.firestore();
-  const q = query(collection(db, "users"))
-  const aa = await getDocs(q);
+async function getAllUsers() {
+    // const aha = db.firestore();
+    const q = query(collection(db, "users"))
+    const aa = await getDocs(q);
 
-  const usr = aa.docs.map((doc) => ({
-    ...doc.data(),
-    id: doc.id,
-  }));
-  return usr;
+    const usr = aa.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+    }));
+    return usr;
 }
 
 
 async function updatePhotoProfile(uid, downloadUrl) {
-  // Cari data dari collection users yang mempunyai dokument sama dgn uid
-  // update dengan profile url-nya
-  await updateDoc(doc(db, "users", uid), {
-    profileUrl: downloadUrl,
-  });
+    // Cari data dari collection users yang mempunyai dokument sama dgn uid
+    // update dengan profile url-nya
+    await updateDoc(doc(db, "users", uid), {
+        profileUrl: downloadUrl,
+    });
 }
 
 async function getLeaderBoards() {
-  const ref = collection(db, "users_leaderboard");
-  const q = query(ref, orderBy("score", "desc"), limit(5));
-  const d = await getDocs(q);
-  return d.docs.map((d) => d.data());
+    const ref = collection(db, "users_leaderboard");
+    const q = query(ref, orderBy("score", "desc"), limit(5));
+    const d = await getDocs(q);
+    return d.docs.map((d) => d.data());
 }
 
 async function updateLeaderboardDb(user, result) {
-  const d = doc(db, "users_leaderboard", user.uid);
-  const docs = await getDoc(d);
+    const d = doc(db, "users_leaderboard", user.uid);
+    const docs = await getDoc(d);
 
-  const data = docs.data();
+    const data = docs.data();
 
-  const asignScore = result === "WIN" ? 2 : result === "LOSE" ? -1 : 0;
-  const compare = (prms, prms2) => (prms === prms2 ? 1 : 0);
+    const asignScore = result === "WIN" ? 2 : result === "LOSE" ? -1 : 0;
+    const compare = (prms, prms2) => (prms === prms2 ? 1 : 0);
 
-  const win = compare(result, "WIN");
-  const lose = compare(result, "LOSE");
-  const draw = compare(result, "DRAW");
+    const win = compare(result, "WIN");
+    const lose = compare(result, "LOSE");
+    const draw = compare(result, "DRAW");
 
-  if (data) {
-    const score = data.draw * 0 + data.lose * -1 + data.win * 2;
-    await updateDoc(d, {
-      win: data.win + win,
-      lose: data.lose + lose,
-      draw: data.draw + draw,
-      score: score + asignScore,
-    });
-  } else {
-    await setDoc(d, {
-      name: user.name,
-      win,
-      lose,
-      draw,
-      score: asignScore,
-    });
-  }
+    if (data) {
+        const score = data.draw * 0 + data.lose * -1 + data.win * 2;
+        await updateDoc(d, {
+            win: data.win + win,
+            lose: data.lose + lose,
+            draw: data.draw + draw,
+            score: score + asignScore,
+        });
+    } else {
+        await setDoc(d, {
+            name: user.name,
+            win,
+            lose,
+            draw,
+            score: asignScore,
+        });
+    }
 }
 
 const logout = () => {
-  signOut(auth);
+    signOut(auth);
 };
 
 export {
-  auth,
-  db,
-  signInWithGoogle,
-  signInWithFacebook,
-  signInWithTwitter,
-  signInWithEmailAndPassword,
-  logInWithEmailAndPassword,
-  registerWithEmailAndPassword,
-  sendPasswordReset,
-  sendPasswordResetEmail,
-  logout,
-  getUser,
-  getAllUsers,
-  updatePhotoProfile,
-  getLeaderBoards,
-  updateLeaderboardDb as updateLeaderboard,
-  storage,
+    auth,
+    db,
+    signInWithGoogle,
+    signInWithFacebook,
+    signInWithTwitter,
+    signInWithGithub,
+    signInWithEmailAndPassword,
+    logInWithEmailAndPassword,
+    registerWithEmailAndPassword,
+    sendPasswordReset,
+    sendPasswordResetEmail,
+    logout,
+    getUser,
+    getAllUsers,
+    updatePhotoProfile,
+    getLeaderBoards,
+    updateLeaderboardDb as updateLeaderboard,
+    storage,
 };
