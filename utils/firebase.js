@@ -26,23 +26,13 @@ import {
 } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBxk4qV3VWVAur7C4P5sh0yhwFv4EL_FRI",
-//   authDomain: "latihan-binar.firebaseapp.com",
-//   databaseURL: "https://latihan-binar-default-rtdb.asia-southeast1.firebasedatabase.app",
-//   projectId: "latihan-binar",
-//   storageBucket: "latihan-binar.appspot.com",
-//   messagingSenderId: "627058673453",
-//   appId: "1:627058673453:web:b3ba1f602b39c1497275a4",
-//   measurementId: "G-NLL2N4XSD7"
-// };
 const firebaseConfig = {
-  apiKey: "AIzaSyCb-T20PtA5x2i41rpqHP6e_by47DcH3x8",
-  authDomain: "binar-fsw20-platinum.firebaseapp.com",
-  projectId: "binar-fsw20-platinum",
-  storageBucket: "binar-fsw20-platinum.appspot.com",
-  messagingSenderId: "216935647513",
-  appId: "1:216935647513:web:845bb4e62a1f9e855b5d88",
+  apiKey: "AIzaSyCcGFSQJASwJPwrrzMk6VURy3G871MX4A4",
+  authDomain: "binar-ch-10.firebaseapp.com",
+  projectId: "binar-ch-10",
+  storageBucket: "binar-ch-10.appspot.com",
+  messagingSenderId: "538177211643",
+  appId: "1:538177211643:web:8ed9ce9ee0dbb03f91f45e",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -157,9 +147,9 @@ async function getUser(uid) {
   return querySnapshot.docs.map((doc) => ({ ...doc.data() }))[0];
 }
 
-async function getAllUsers(){
+async function getAllUsers() {
   // const aha = db.firestore();
-  const q = query(collection(db, "users"))
+  const q = query(collection(db, "users"));
   const aa = await getDocs(q);
 
   const usr = aa.docs.map((doc) => ({
@@ -168,7 +158,6 @@ async function getAllUsers(){
   }));
   return usr;
 }
-
 
 async function updatePhotoProfile(uid, downloadUrl) {
   // Cari data dari collection users yang mempunyai dokument sama dgn uid
@@ -185,8 +174,8 @@ async function getLeaderBoards() {
   return d.docs.map((d) => d.data());
 }
 
-async function updateLeaderboardDb(user, result) {
-  const d = doc(db, "users_leaderboard", user.uid);
+async function updateLeaderboardDb(userUid, userName, result) {
+  const d = doc(db, "users_leaderboard", userUid);
   const docs = await getDoc(d);
 
   const data = docs.data();
@@ -208,7 +197,7 @@ async function updateLeaderboardDb(user, result) {
     });
   } else {
     await setDoc(d, {
-      name: user.name,
+      name: userName,
       win,
       lose,
       draw,
